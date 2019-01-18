@@ -32,9 +32,9 @@ def conn_socket(addr_tup):
 
 def main():
     addr_info = socket.getaddrinfo(HOST, PORT, proto=socket.SOL_TCP)
-    while True:
-            p = Process(target = conn_socket, args = (addr_info))
-            p.daemon = True
-            p.start()
+    while True: #warning will run indef - but I guess mimics multiple calls
+        p = Process(target = conn_socket, args = (addr_info))
+        p.daemon = True
+        p.start()
 if __name__ == "__main__":
     main()
