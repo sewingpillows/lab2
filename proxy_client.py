@@ -8,13 +8,13 @@ BUFFER_SIZE = 1024
 payload = """GET / HTTP/1.0
 Host: {HOST}
 
-""".format(HOST=HOST)
+""".format(HOST="www.google.com")
 
 def conn_socket(addr_tup):
     (family, socktype, proto, canonname, sockaddr) = addr_tup
     try:
         s = socket.socket(family, socktype, proto)
-        s.connect(sockaddr)
+        s.connect(("localhost", 8081))
         s.sendall(payload.encode())
         s.shutdown(socket.SHUT_WR)
         full_data = b""
